@@ -1,6 +1,7 @@
 ﻿
 // MultiplosCatchs();
-TentaSalvarLog();
+// TentaSalvarLog();
+// DuasCamadasDeTry();
 
 void TentaSalvarLog(){
 
@@ -40,7 +41,6 @@ void TentaSalvarLog(){
 
 }
 
-
 void MultiplosCatchs()
 {
     try
@@ -55,22 +55,54 @@ void MultiplosCatchs()
     }
     catch (DivideByZeroException ex)
     {
-        Console.Write("Cannot divide by zero. Please try again.");
-    }
-    catch (InvalidOperationException ex)
-    {
-        Console.Write("Invalid operation. Please try again." + ex.Message);
+        Console.WriteLine("Não é possível dividir por zero." + ex.Message);
     }
     catch (FormatException ex)
     {
-        Console.Write("Not a valid format. Please try again." + ex.Message);
+        Console.WriteLine($"O valor digitado não é um número válido." + ex.Message);
     }
     catch (Exception ex)
     {
-        Console.Write("Error occurred! Please try again." + ex.Message);
+        Console.Write("Erro genérico." + ex.Message);
     }
     finally
     {
         Console.WriteLine("FIM");
     }
+}
+
+void DuasCamadasDeTry() {
+
+    mostraProdutosHtml();
+
+    string[] conectaBancoDeDados() {
+	
+	string[] resultado = {"produto 1", "produto 2", "produto 3"};
+	
+	try {
+		
+		throw(new Exception("O banco de dados está indisponível"));
+		Console.WriteLine("Conectei no banco de dados.");
+		
+	}
+	catch {
+		Console.WriteLine("Loguei o erro no arquivo erros.txt");
+		throw;
+	}
+	
+	return resultado;
+}	
+
+void mostraProdutosHtml() {
+	
+	try {
+		string[] produtos = conectaBancoDeDados();
+	
+		foreach(var produto in produtos)
+			Console.WriteLine(produto);		
+	}
+	catch {
+		Console.WriteLine("Ocorreu um erro interno. Favor tentar de novo daqui a 15 minutos.");	
+	}
+}
 }
