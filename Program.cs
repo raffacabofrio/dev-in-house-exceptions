@@ -75,25 +75,25 @@ void DuasCamadasDeTry() {
 
     mostraProdutosHtml();
 
-    string[] conectaBancoDeDados() {
-	
-	string[] resultado = {"produto 1", "produto 2", "produto 3"};
-	
-	try {
-		
-		throw(new Exception("O banco de dados está indisponível"));
-		Console.WriteLine("Conectei no banco de dados.");
-		
-	}
-	catch {
-		Console.WriteLine("Loguei o erro no arquivo erros.txt");
-		throw;
-	}
-	
-	return resultado;
-}	
+     string[] conectaBancoDeDados() {
+        
+        string[] resultado = {"produto 1", "produto 2", "produto 3"};
+        
+        try {
+            
+            throw(new Exception("O banco de dados está indisponível"));
+            Console.WriteLine("Conectei no banco de dados.");
+            
+        }
+        catch {
+            Console.WriteLine("Loguei o erro no arquivo erros.txt");
+            throw;
+        }
+        
+        return resultado;
+    }	
 
-void mostraProdutosHtml() {
+    void mostraProdutosHtml() {
 	
 	try {
 		string[] produtos = conectaBancoDeDados();
